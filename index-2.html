@@ -1,0 +1,2037 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Путь инвестора — Феодосийский индустриальный парк</title>
+  <style>
+    :root{
+      --hero-image:url("мост.jpg");
+
+      --bg:#eef4fb;
+      --bg2:#f8fbff;
+      --panel:#ffffff;
+      --line:#d9e4f2;
+      --text:#1f2a44;
+      --muted:#6b7a90;
+      --blue:#2d62ea;
+      --blueDark:#173ea8;
+      --navy:#0f2247;
+
+      --green:#11b56b;
+      --greenDark:#0f6c3a;
+      --greenDeep:#14532d;
+      --greenBg:#e8fbf2;
+
+      --amber:#c98200;
+      --amberDark:#d68400;
+      --amberLight:#f0a53a;
+      --amberBg:#fff3dc;
+      --amberBorder:#f3cf93;
+
+      --shadow:0 16px 40px rgba(18,41,76,.08);
+      --shadow-soft:0 10px 24px rgba(18,41,76,.06);
+      --radius:26px;
+      --max:1450px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,Manrope,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(45,98,234,.08), transparent 28%),
+        radial-gradient(circle at 100% 0%, rgba(20,184,110,.06), transparent 18%),
+        linear-gradient(180deg,var(--bg2),var(--bg));
+    }
+
+    body.modal-open{
+      overflow:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+    button,input,select{font:inherit}
+    img{max-width:100%;display:block}
+
+    .shell{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:18px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:-.03em;
+    }
+
+    .brand__mark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      background:linear-gradient(135deg,var(--blue),var(--blueDark));
+      box-shadow:0 10px 24px rgba(45,98,234,.28);
+      font-weight:800;
+    }
+
+    .brand__sub{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:600;
+      margin-top:2px;
+    }
+
+    .meta{
+      color:var(--muted);
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .hero{
+      position:relative;
+      min-height:580px;
+      display:flex;
+      align-items:flex-end;
+      padding:28px;
+      border-radius:36px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+      background-image:
+
+        var(--hero-image);
+    
+      background-repeat:no-repeat,no-repeat,no-repeat,no-repeat;
+      background-position:left,center,center,center;
+      background-size:auto,auto,cover,auto;
+      color:#fff;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:auto -8% -24% auto;
+      width:48%;
+      height:52%;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.24), rgba(255,255,255,0));
+      filter:blur(30px);
+      pointer-events:none;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 78% 26%, rgba(255,255,255,.16), transparent 16%),
+        radial-gradient(circle at 88% 70%, rgba(255,255,255,.10), transparent 18%);
+      pointer-events:none;
+    }
+
+    .hero__panel{
+      position:relative;
+      z-index:2;
+      max-width:760px;
+      padding:28px;
+      border-radius:30px;
+      background:linear-gradient(180deg, rgba(8,18,42,.42), rgba(8,18,42,.30));
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter:blur(10px);
+      box-shadow:0 16px 40px rgba(8,18,42,.16);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      backdrop-filter:blur(8px);
+      font-size:13px;
+      font-weight:700;
+      color:rgba(255,255,255,.95);
+    }
+
+    .hero h1{
+      margin:16px 0 12px;
+      font-size:clamp(38px,5vw,64px);
+      line-height:.94;
+      letter-spacing:-.05em;
+    }
+
+    .hero p{
+      margin:0;
+      max-width:64ch;
+      color:rgba(255,255,255,.90);
+      line-height:1.7;
+      font-size:16px;
+    }
+
+    .hero__chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:20px;
+    }
+
+    .hero__chip{
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.94);
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .toolbar{
+      display:grid;
+      grid-template-columns:1fr auto auto;
+      gap:12px;
+      padding:14px;
+      border-radius:24px;
+      background:rgba(255,255,255,.82);
+      backdrop-filter:blur(10px);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-soft);
+      margin-bottom:16px;
+    }
+
+    .search,
+    .select,
+    .cta{
+      min-height:50px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      padding:0 16px;
+      outline:none;
+    }
+
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      background:linear-gradient(135deg,var(--blue),var(--blueDark));
+      color:#fff;
+      border:none;
+      cursor:pointer;
+      box-shadow:0 10px 22px rgba(45,98,234,.22);
+      padding:0 18px;
+      white-space:nowrap;
+    }
+
+    .phase-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      padding:12px;
+      margin-bottom:16px;
+      border-radius:26px;
+      background:rgba(255,255,255,.78);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .phase-pill{
+      border:1px solid transparent;
+      padding:12px 16px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:800;
+      transition:.18s ease;
+      color:#fff;
+      position:relative;
+    }
+
+    .phase-pill small{
+      display:block;
+      font-size:11px;
+      font-weight:700;
+      margin-top:2px;
+      color:rgba(255,255,255,.82);
+    }
+
+    .phase-pill:hover{
+      transform:translateY(-1px);
+    }
+
+    .phase-pill--partial{
+      background:linear-gradient(135deg, var(--amberLight), var(--amberDark));
+      box-shadow:0 8px 18px rgba(214,132,0,.18);
+    }
+
+    .phase-pill--complete{
+      background:linear-gradient(135deg, var(--greenDeep), var(--greenDark));
+      box-shadow:0 8px 18px rgba(15,108,58,.18);
+    }
+
+    .phase-pill.is-active{
+      transform:translateY(-1px);
+      box-shadow:
+        0 12px 28px rgba(18,41,76,.12),
+        0 0 0 3px rgba(255,255,255,.75);
+    }
+
+    .roadmap{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .phase{
+      padding:18px;
+      border-radius:30px;
+      background:rgba(255,255,255,.82);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .phase__head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .phase__title h2{
+      margin:8px 0 0;
+      font-size:24px;
+      line-height:1.05;
+      letter-spacing:-.03em;
+    }
+
+    .phase__meta{
+      color:var(--muted);
+      font-weight:700;
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .card{
+      border-radius:28px;
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      border:1px solid var(--line);
+      box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+      padding:16px;
+      transition:.18s ease;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      right:-26px;
+      top:-26px;
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(45,98,234,.10), rgba(45,98,234,0));
+      pointer-events:none;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow-soft);
+      border-color:#c8d8ec;
+    }
+
+    .card.is-selected{
+      border-color:rgba(45,98,234,.35);
+      box-shadow:0 0 0 4px rgba(45,98,234,.08), var(--shadow-soft);
+    }
+
+    .card.is-locked{
+      opacity:.56;
+      filter:saturate(.86);
+      cursor:not-allowed;
+      box-shadow:none;
+    }
+
+    .card.is-locked:hover{
+      transform:none;
+      border-color:var(--line);
+      box-shadow:none;
+    }
+
+    .card.is-locked.is-selected{
+      border-color:var(--line);
+      box-shadow:none;
+    }
+
+    .card.is-locked .num{
+      background:linear-gradient(135deg,#8ea7dc,#6f89c4);
+      box-shadow:none;
+    }
+
+    .card.is-locked .step-glyph{
+      opacity:.76;
+      filter:saturate(.72);
+    }
+
+    .card__top{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      justify-content:space-between;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .card__topMain{
+      display:flex;
+      gap:12px;
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .num{
+      width:40px;
+      height:40px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight:800;
+      background:linear-gradient(135deg,var(--blue),var(--blueDark));
+      box-shadow:0 10px 18px rgba(45,98,234,.2);
+      flex:0 0 auto;
+    }
+
+    .card h3{
+      margin:0;
+      font-size:20px;
+      line-height:1.16;
+      letter-spacing:-.03em;
+      word-break:break-word;
+    }
+
+    .card__phase{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+      margin-top:4px;
+    }
+
+    .step-glyph{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      background:linear-gradient(135deg,var(--icon-a),var(--icon-b));
+      box-shadow:0 12px 26px var(--icon-shadow);
+      flex:0 0 auto;
+    }
+
+    .step-glyph svg{
+      width:26px;
+      height:26px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .step-glyph--large{
+      width:84px;
+      height:84px;
+      border-radius:24px;
+    }
+
+    .step-glyph--large svg{
+      width:38px;
+      height:38px;
+    }
+
+    .card__controls{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+      position:relative;
+      z-index:1;
+    }
+
+    .duration-chip{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 11px;
+      border-radius:999px;
+      background:#f4f8ff;
+      border:1px solid #dce7f5;
+      color:#35517c;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .status-toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      padding:3px;
+      border-radius:999px;
+      background:#f4f7fc;
+      border:1px solid #dce7f5;
+      flex-wrap:wrap;
+    }
+
+    .status-toggle__btn{
+      border:none;
+      background:transparent;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+      border-radius:999px;
+      padding:7px 10px;
+      cursor:pointer;
+      transition:.16s ease;
+    }
+
+    .status-toggle__btn.is-active[data-status="done"]{
+      background:var(--greenBg);
+      color:var(--greenDark);
+    }
+
+    .status-toggle__btn.is-active[data-status="waiting"]{
+      background:var(--amberBg);
+      color:var(--amber);
+    }
+
+    .status-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .status-badge::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:currentColor;
+    }
+
+    .status-badge--done{
+      color:var(--greenDark);
+      background:var(--greenBg);
+    }
+
+    .status-badge--waiting{
+      color:var(--amber);
+      background:var(--amberBg);
+    }
+
+    .lock-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:34px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:var(--amberBg);
+      border:1px solid var(--amberBorder);
+      color:#9a6100;
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .lock-note{
+      margin:0 0 12px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:#fff8ec;
+      border:1px solid #f5dfb5;
+      color:#9a6100;
+      font-size:12px;
+      font-weight:800;
+      line-height:1.45;
+      position:relative;
+      z-index:1;
+    }
+
+    .card__summary{
+      margin:0 0 12px;
+      color:#3f4c67;
+      line-height:1.58;
+      font-size:14px;
+      min-height:88px;
+      position:relative;
+      z-index:1;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#f4f8ff;
+      border:1px solid #dce7f5;
+      color:#35517c;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .card__bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      border-top:1px solid #edf2fa;
+      padding-top:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .duration{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .link-more{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--blueDark);
+      font-size:13px;
+      font-weight:900;
+    }
+
+    .link-more--locked{
+      color:#90a0b8;
+    }
+
+    .empty-state{
+      padding:18px;
+      border-radius:24px;
+      background:#fff;
+      border:1px dashed var(--line);
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .footer-note{
+      margin-top:18px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+      padding:18px 0 8px;
+    }
+
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:1200;
+      display:none;
+    }
+
+    .modal.is-open{
+      display:block;
+    }
+
+    .modal__backdrop{
+      position:absolute;
+      inset:0;
+      background:rgba(15,34,71,.62);
+      backdrop-filter:blur(5px);
+    }
+
+    .modal__dialog{
+      position:relative;
+      width:min(980px, calc(100vw - 28px));
+      max-height:calc(100vh - 28px);
+      overflow:auto;
+      margin:14px auto;
+      padding:16px;
+      border-radius:32px;
+      background:rgba(255,255,255,.985);
+      border:1px solid var(--line);
+      box-shadow:0 24px 60px rgba(15,34,71,.25);
+    }
+
+    .modal__dialog::-webkit-scrollbar,
+    .print-sheet::-webkit-scrollbar{
+      width:10px;
+    }
+
+    .modal__dialog::-webkit-scrollbar-thumb,
+    .print-sheet::-webkit-scrollbar-thumb{
+      background:#d8e2f0;
+      border-radius:999px;
+      border:2px solid transparent;
+      background-clip:padding-box;
+    }
+
+    .modal__top{
+      display:flex;
+      justify-content:flex-end;
+      position:sticky;
+      top:-2px;
+      z-index:4;
+      margin-bottom:10px;
+      padding-top:2px;
+      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.92));
+    }
+
+    .modal__close{
+      width:44px;
+      height:44px;
+      border:none;
+      border-radius:14px;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      background:#f3f7ff;
+      color:var(--navy);
+      font-size:28px;
+      line-height:1;
+      font-weight:500;
+      box-shadow:0 6px 16px rgba(18,41,76,.08);
+    }
+
+    .detail-hero{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:18px;
+      align-items:start;
+      padding:18px;
+      border-radius:26px;
+      background:linear-gradient(180deg,#f9fbff,#eef5ff);
+      border:1px solid #dce7f5;
+      margin-bottom:14px;
+    }
+
+    .detail-hero__content{
+      min-width:0;
+    }
+
+    .detail-hero__chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:10px;
+    }
+
+    .detail-chip{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #dce7f5;
+      color:#24426d;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .detail-chip--phase{
+      background:#eef5ff;
+      color:#173ea8;
+      border-color:#d5e4fb;
+    }
+
+    .detail-hero h2{
+      margin:0 0 8px;
+      font-size:clamp(28px, 3vw, 40px);
+      line-height:1.02;
+      letter-spacing:-.04em;
+      word-break:break-word;
+    }
+
+    .detail-hero p{
+      margin:0;
+      color:#3f4c67;
+      line-height:1.65;
+      font-size:15px;
+    }
+
+    .details__toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+
+    .detail-meta{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+      margin-bottom:12px;
+    }
+
+    .detail-meta__item{
+      padding:12px 13px;
+      border-radius:18px;
+      background:#f7faff;
+      border:1px solid #dce7f5;
+      min-width:0;
+    }
+
+    .detail-meta__item--full{
+      grid-column:1 / -1;
+    }
+
+    .detail-meta__label{
+      display:block;
+      color:var(--muted);
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:6px;
+    }
+
+    .detail-meta__value{
+      display:block;
+      font-size:14px;
+      font-weight:800;
+      line-height:1.45;
+      word-break:break-word;
+    }
+
+    .details-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+
+    .info-box{
+      padding:13px 14px;
+      border-radius:18px;
+      background:#f8fbff;
+      border:1px solid #dce7f5;
+    }
+
+    .info-box h4{
+      margin:0 0 7px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--muted);
+    }
+
+    .info-box p{
+      margin:0;
+      line-height:1.6;
+      color:#33405a;
+      font-size:14px;
+    }
+
+    .info-box ul{
+      margin:0;
+      padding-left:18px;
+      color:#33405a;
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .info-box li + li{
+      margin-top:5px;
+    }
+
+    .next-step{
+      margin-top:12px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#0f2247,#173ea8);
+      color:#fff;
+      box-shadow:0 12px 28px rgba(23,62,168,.18);
+    }
+
+    .next-step__label{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+      opacity:.75;
+      font-weight:800;
+      margin-bottom:6px;
+    }
+
+    .next-step__title{
+      font-size:15px;
+      font-weight:900;
+      line-height:1.35;
+    }
+
+    #printSheet{
+      display:none;
+    }
+
+    @media (max-width: 1280px){
+      .cards{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 1024px){
+      .hero{
+        min-height:520px;
+      }
+    }
+
+    @media (max-width: 860px){
+      .shell{padding:12px}
+      .toolbar{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .phase__head{flex-direction:column;align-items:flex-start}
+      .detail-meta{grid-template-columns:1fr}
+      .detail-meta__item--full{grid-column:auto}
+      .hero{
+        min-height:460px;
+        padding:20px;
+      }
+      .hero__panel{
+        padding:22px;
+      }
+      .detail-hero{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 640px){
+      .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .hero{
+        min-height:420px;
+      }
+
+      .modal__dialog{
+        width:100vw;
+        height:100vh;
+        max-height:none;
+        margin:0;
+        border-radius:0;
+        padding:12px;
+      }
+
+      .detail-hero h2{
+        font-size:30px;
+      }
+    }
+
+    @media print{
+      @page{
+        size:A4;
+        margin:12mm;
+      }
+
+      body{
+        background:#fff !important;
+      }
+
+      body.print-mode .shell{
+        display:none !important;
+      }
+
+      body.print-mode #printSheet{
+        display:block !important;
+      }
+
+      .modal{
+        display:none !important;
+      }
+
+      #printSheet{
+        display:none;
+      }
+
+      .print-sheet{
+        color:#111;
+        font-family:Inter,Manrope,Arial,sans-serif;
+      }
+
+      .print-sheet__title{
+        font-size:22px;
+        font-weight:800;
+        margin:0 0 4mm;
+      }
+
+      .print-sheet__meta{
+        font-size:12px;
+        color:#444;
+        margin-bottom:8mm;
+      }
+
+      .print-phase{
+        margin-bottom:8mm;
+        page-break-inside:avoid;
+      }
+
+      .print-phase__title{
+        font-size:16px;
+        font-weight:800;
+        margin:0 0 4mm;
+        padding-bottom:2mm;
+        border-bottom:1px solid #999;
+      }
+
+      .print-cards{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:4mm;
+      }
+
+      .print-card{
+        border:1px solid #b9c2ce;
+        border-radius:10px;
+        padding:4mm;
+        page-break-inside:avoid;
+      }
+
+      .print-card__top{
+        display:flex;
+        align-items:flex-start;
+        justify-content:space-between;
+        gap:6mm;
+        margin-bottom:2mm;
+      }
+
+      .print-card h3{
+        margin:0;
+        font-size:14px;
+        line-height:1.3;
+      }
+
+      .print-card__phase{
+        font-size:11px;
+        color:#555;
+        margin-top:1mm;
+      }
+
+      .print-status{
+        font-size:11px;
+        font-weight:700;
+        border:1px solid #999;
+        border-radius:999px;
+        padding:1.5mm 3mm;
+        white-space:nowrap;
+      }
+
+      .print-meta{
+        font-size:11.5px;
+        margin:2mm 0;
+        line-height:1.45;
+      }
+
+      .print-docs{
+        font-size:11px;
+        line-height:1.45;
+        margin-top:2mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand__mark">F</div>
+        <div>
+          <div>Инвест-навигация</div>
+          <div class="brand__sub">Феодосийский индустриальный парк</div>
+        </div>
+      </div>
+      <div class="meta">Актуально на 2026 г. · интерактивный прототип</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero__panel">
+        <div class="eyebrow">Путь инвестора · 14 этапов · от заявки до проектной мощности</div>
+        <h1>Современная дорожная карта для инвестора</h1>
+        <p>
+          Все этапы собраны в одном интерфейсе: сроки, ответственные, риски, нормативная база,
+          документы и текущий статус. Детали этапа открываются по клику на карточку, а следующий шаг
+          становится доступен только после завершения предыдущего.
+        </p>
+
+        <div class="hero__chips">
+          <div class="hero__chip">Большой hero под выразительное фото</div>
+          <div class="hero__chip">14 этапов</div>
+          <div class="hero__chip">Статусы и прогресс</div>
+          <div class="hero__chip">Печать чек-листа в PDF</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <input id="search" class="search" type="search" placeholder="Поиск по этапу, описанию, ведомству..." />
+      <select id="phaseSelect" class="select">
+        <option value="all">Все фазы</option>
+      </select>
+      <button id="printBtn" class="cta" type="button">Скачать чек-лист (PDF)</button>
+    </section>
+
+    <div class="phase-pills" id="phasePills"></div>
+
+    <main class="roadmap" id="roadmap"></main>
+
+    <div class="footer-note">
+      Статусы карточек сохраняются локально в браузере. Следующий этап открывается только после завершения предыдущего.
+      Для PDF нажми кнопку сверху и выбери в окне печати “Сохранить как PDF”.
+    </div>
+  </div>
+
+  <div class="modal" id="detailsModal" aria-hidden="true">
+    <div class="modal__backdrop" data-action="close-modal"></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true">
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <div id="printSheet"></div>
+
+  <script>
+    const STORAGE_KEY = "investor-roadmap-statuses-v5";
+
+    const phaseMap = {
+      pre: { name: "Прединвестиционная", range: "1–3" },
+      permit: { name: "Проектно-разрешительная", range: "4–8" },
+      build: { name: "Строительная", range: "9–10" },
+      launch: { name: "Пусконаладка", range: "11–13" },
+      monitor: { name: "Мониторинг", range: "14" }
+    };
+
+    const phases = [
+      { id: "all", name: "Все этапы", range: "1–14" },
+      { id: "pre", name: "Прединвестиционная", range: "1–3" },
+      { id: "permit", name: "Проектно-разрешительная", range: "4–8" },
+      { id: "build", name: "Строительная", range: "9–10" },
+      { id: "launch", name: "Пусконаладка", range: "11–13" },
+      { id: "monitor", name: "Мониторинг", range: "14" }
+    ];
+
+    const groupedPhases = [
+      { id: "pre", name: "Прединвестиционная", range: "Этапы 1–3" },
+      { id: "permit", name: "Проектно-разрешительная", range: "Этапы 4–8" },
+      { id: "build", name: "Строительная", range: "Этапы 9–10" },
+      { id: "launch", name: "Пусконаладка", range: "Этапы 11–13" },
+      { id: "monitor", name: "Мониторинг", range: "Этап 14" }
+    ];
+
+    const statusDict = {
+      done: { label: "Готово", className: "done" },
+      waiting: { label: "Ожидает", className: "waiting" }
+    };
+
+    const stepIcons = {
+      1: {
+        a:"#2563eb",
+        b:"#1d4ed8",
+        shadow:"rgba(37,99,235,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5h16"/><path d="M7 16v-4"/><path d="M12 16V9"/><path d="M17 16V6"/><path d="M5.5 9.5L9 7l3 2 6-4"/></svg>`
+      },
+      2: {
+        a:"#0891b2",
+        b:"#0f766e",
+        shadow:"rgba(8,145,178,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4.5v4"/><path d="M15 4.5v4"/><path d="M8 8.5h8v3a4 4 0 0 1-8 0v-3Z"/><path d="M12 15.5v4"/></svg>`
+      },
+      3: {
+        a:"#16a34a",
+        b:"#166534",
+        shadow:"rgba(22,163,74,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-2.7 7.7-7 10-4.3-2.3-7-5.6-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg>`
+      },
+      4: {
+        a:"#7c3aed",
+        b:"#4f46e5",
+        shadow:"rgba(124,58,237,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3.5h6l4 4V20.5H8a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2Z"/><path d="M14 3.5v4h4"/><path d="M9.5 15.5c1-.9 2.4-1.4 3.8-1.4 1.2 0 2.2.3 3.2.9"/><path d="M9.5 18h7"/></svg>`
+      },
+      5: {
+        a:"#ea580c",
+        b:"#c2410c",
+        shadow:"rgba(234,88,12,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6l5-2 6 2 5-2v14l-5 2-6-2-5 2V6Z"/><path d="M9 4v14"/><path d="M15 6v14"/><circle cx="12" cy="10.5" r="1.6"/></svg>`
+      },
+      6: {
+        a:"#0ea5e9",
+        b:"#2563eb",
+        shadow:"rgba(14,165,233,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 5v14"/><path d="M12 5v14"/><path d="M16 5v14"/><path d="M4 10h16"/><path d="M4 14h16"/></svg>`
+      },
+      7: {
+        a:"#ec4899",
+        b:"#c026d3",
+        shadow:"rgba(236,72,153,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5.5" r="2"/><path d="M12 7.5v2.5"/><path d="m8 20 4-10 4 10"/><path d="M7 17h10"/></svg>`
+      },
+      8: {
+        a:"#475569",
+        b:"#1e293b",
+        shadow:"rgba(71,85,105,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4.5h6l4 4V19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2Z"/><path d="M14 4.5v4h4"/><circle cx="11" cy="13" r="2.5"/><path d="m13 15 2 2"/></svg>`
+      },
+      9: {
+        a:"#d97706",
+        b:"#b45309",
+        shadow:"rgba(217,119,6,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4.5" width="14" height="15" rx="2"/><path d="M8 9.5h8"/><path d="M8 13h5"/><path d="M14.5 15.5 12 20l-2.5-4.5"/></svg>`
+      },
+      10: {
+        a:"#ef4444",
+        b:"#b91c1c",
+        shadow:"rgba(239,68,68,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13a7 7 0 0 1 14 0"/><path d="M4 13h16"/><path d="M7 13v3"/><path d="M12 10v6"/><path d="M17 13v3"/><path d="M6 16.5h12"/></svg>`
+      },
+      11: {
+        a:"#22c55e",
+        b:"#166534",
+        shadow:"rgba(34,197,94,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4.5" width="10" height="15" rx="2"/><path d="M8 8h1"/><path d="M11 8h1"/><path d="M8 11h1"/><path d="M11 11h1"/><path d="M8 14h1"/><path d="M11 14h1"/><path d="m17 16 2 2 3-4"/></svg>`
+      },
+      12: {
+        a:"#059669",
+        b:"#0f766e",
+        shadow:"rgba(5,150,105,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4.5h6l4 4V19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2Z"/><path d="M14 4.5v4h4"/><circle cx="10.5" cy="14" r="2"/><path d="M12.5 14h4"/><path d="M15.5 14v1.5"/><path d="M17 14v1"/></svg>`
+      },
+      13: {
+        a:"#6366f1",
+        b:"#4338ca",
+        shadow:"rgba(99,102,241,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 4.5v2.2"/><path d="M12 17.3v2.2"/><path d="M4.5 12h2.2"/><path d="M17.3 12h2.2"/><path d="m6.8 6.8 1.6 1.6"/><path d="m15.6 15.6 1.6 1.6"/><path d="m17.2 6.8-1.6 1.6"/><path d="m8.4 15.6-1.6 1.6"/></svg>`
+      },
+      14: {
+        a:"#f43f5e",
+        b:"#db2777",
+        shadow:"rgba(244,63,94,.24)",
+        svg:`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3"/><path d="m12 12 5-5"/><path d="M15 7h2v2"/></svg>`
+      }
+    };
+
+    const steps = [
+      {
+        id: 1,
+        phase: "pre",
+        title: "Разработка бизнес-плана и ТЭО",
+        duration: "2–4 мес",
+        summary: "Маркетинговое исследование, логистика, финмодель, NPV, IRR и ТЭО для подачи.",
+        description: "Маркетинговое исследование рынка Крыма и ЮФО, анализ логистики (Крымский мост, порт). Финансовая модель: CAPEX, OPEX, NPV, IRR. ТЭО подаётся в УК и Минпромторг.",
+        responsible: "Инвестор / АО «КР РК» (консультации)",
+        risks: "Ошибки в логистических расчётах, завышение тарифов → аудит финансовой модели специалистами Корпорации развития.",
+        law: "Не регламентирован; рекомендуется 2–4 мес.",
+        documents: ["Бизнес-план", "ТЭО", "Финмодель", "Маркетинговое исследование"],
+        result: "Подготовлен инвестиционный пакет для запуска маршрута.",
+        status: "done"
+      },
+      {
+        id: 2,
+        phase: "pre",
+        title: "Получение предварительных ТУ",
+        duration: "14–20 раб. дней (до 2 мес.)",
+        summary: "Совместный выезд, выбор участка и запросы по сетям на техприсоединение.",
+        description: "Совместный выезд с УК, выбор участка. Запрос в ГУП «Крымгазсети», «Крымэнерго», «Вода Крыма» на техприсоединение.",
+        responsible: "АО «КР РК» + ресурсоснабжающие организации",
+        risks: "Отсутствие лимитов мощности → перенос участка; задержка ТУ.",
+        law: "14–20 раб. дней по регламенту",
+        documents: ["Запросы в ресурсоснабжающие организации", "Схема участка", "Предварительные параметры мощности"],
+        result: "Есть понимание по подключению газа, воды и электричества.",
+        status: "done"
+      },
+      {
+        id: 3,
+        phase: "pre",
+        title: "Получение статуса резидента ФИП",
+        duration: "~1,5–2 мес",
+        summary: "Подача заявления, проверка пакета и решение экспертной комиссии.",
+        description: "Подача заявления, учредительных документов, ТЭО, справок об отсутствии долгов. Проверка 5 дней, доработка 10 дней, решение Экспертной комиссии + подписание соглашения с УК.",
+        responsible: "Экспертная комиссия, УК (АО «КР РК»)",
+        risks: "Несоответствие ОКВЭД, аффилированность с офшорами, неполный пакет → отказ. Прозрачная структура владения.",
+        law: "п.4.7 Положения о резидентской политике",
+        documents: ["Заявление", "Учредительные документы", "ТЭО", "Справки об отсутствии долгов"],
+        result: "Получен статус резидента ФИП.",
+        status: "done"
+      },
+      {
+        id: 4,
+        phase: "permit",
+        title: "Заключение инвестиционного соглашения",
+        duration: "30–45 раб. дней",
+        summary: "Ведомственные согласования и рассмотрение на Совете по улучшению инвестклимата.",
+        description: "Заявление в Минэкономики РК, ведомственные согласования (Минпромторг, Минимущество, Минстрой и др.). Рассмотрение на Совете по улучшению инвестклимата.",
+        responsible: "Минэкономики РК, Совет по инвестклимату",
+        risks: "Затягивание согласований → предварительная проверка пакета УК, неофициальные консультации.",
+        law: "Постановление №368",
+        documents: ["Заявление в Минэкономики РК", "Проект инвестсоглашения", "Пакет согласований"],
+        result: "Инвестсоглашение заключено.",
+        status: "done"
+      },
+      {
+        id: 5,
+        phase: "permit",
+        title: "Заключение договора аренды земельного участка",
+        duration: "5 дн. подача + 30 дн. договор",
+        summary: "После инвестсоглашения оформляется аренда участка на льготных условиях.",
+        description: "После инвестсоглашения — подача в Минимущество РК или ОМСУ. Льготная ставка (1 руб./га/год) на период строительства.",
+        responsible: "Минимущество РК / Администрация г. Феодосии",
+        risks: "Несвоевременная подача → лишение статуса резидента (60 дней). Контроль УК.",
+        law: "ст.39.6 ЗК РФ, Положение о парке",
+        documents: ["Инвестсоглашение", "Заявление на аренду", "Пакет по земельному участку"],
+        result: "Заключён договор аренды земельного участка.",
+        status: "done"
+      },
+      {
+        id: 6,
+        phase: "permit",
+        title: "Получение ГПЗУ",
+        duration: "14 раб. дней (до 2 мес)",
+        summary: "Через МФЦ оформляется выписка ИСОГД с красными линиями и ограничениями.",
+        description: "Заявление в Администрацию через МФЦ. Выписка из ИСОГД с красными линиями, отступами, зонами ограничений.",
+        responsible: "Администрация г. Феодосии",
+        risks: "Попадание в охранные зоны; долгая выписка → параллелизация с этапом 7.",
+        law: "ст.57.3 ГрК РФ",
+        documents: ["Заявление через МФЦ", "Выписка ИСОГД", "ГПЗУ"],
+        result: "Получен ГПЗУ для дальнейшего проектирования.",
+        status: "done"
+      },
+      {
+        id: 7,
+        phase: "permit",
+        title: "Разработка и согласование ПСД",
+        duration: "3–6 мес",
+        summary: "Инженерные изыскания, проектирование разделов и учёт сейсмики 9 баллов.",
+        description: "Инженерные изыскания (геология, геодезия). Разделы: АР, КР, внутренние сети, ПОС, сметы. Учёт сейсмики 9 баллов.",
+        responsible: "Проектная организация, технический заказчик",
+        risks: "Ошибки геологии → авторский и технический надзор; входной контроль изысканий.",
+        law: "Постановление №87",
+        documents: ["Инженерные изыскания", "АР", "КР", "ПОС", "Сметы"],
+        result: "Проектная документация подготовлена и согласована.",
+        status: "done"
+      },
+      {
+        id: 8,
+        phase: "permit",
+        title: "Экспертиза ПСД и инженерных изысканий",
+        duration: "30–45 раб. дней (не более 3 мес)",
+        summary: "Проверка смет, конструктивов и инженерных решений в экспертизе.",
+        description: "ГАУ РК «Госстройэкспертиза» или частная аккредитованная организация. Проверка смет, конструктивов, сейсмики.",
+        responsible: "Госстройэкспертиза РК",
+        risks: "Отрицательное заключение из-за сметных ошибок → привлечение проф. сметчика до подачи.",
+        law: "Постановление №145",
+        documents: ["Комплект ПСД", "Сметная документация", "Материалы инженерных изысканий"],
+        result: "Получено положительное заключение экспертизы.",
+        status: "done"
+      },
+      {
+        id: 9,
+        phase: "build",
+        title: "Разрешение на строительство (РнС)",
+        duration: "7 раб. дней (+ до 2 мес)",
+        summary: "Подача ключевого пакета: право на землю, ГПЗУ, экспертиза, ПОС.",
+        description: "Документы: право на землю, ГПЗУ, положительное заключение экспертизы, ПОС. Выдаёт Минжилполитики и стройнадзора Крыма.",
+        responsible: "Минжилполитики и стройнадзора Крыма",
+        risks: "Отсутствие согласования архитектурного облика → подавать параллельно.",
+        law: "ГрК РФ",
+        documents: ["Право на землю", "ГПЗУ", "Заключение экспертизы", "ПОС"],
+        result: "Получено разрешение на строительство.",
+        status: "waiting"
+      },
+      {
+        id: 10,
+        phase: "build",
+        title: "Строительно-монтажные работы",
+        duration: "18–36 мес",
+        summary: "Нулевой цикл, каркас, стены, кровля, сети и строительный надзор.",
+        description: "Нулевой цикл, каркас, стены, кровля. Синхронизация с подключением к магистральным сетям. Строительный надзор.",
+        responsible: "Генподрядчик, авторский надзор",
+        risks: "Логистика стройматериалов (мост, санкции) → создание запаса. Сварка при сейсмике — УЗК швов.",
+        law: "Техрегламенты, 384-ФЗ",
+        documents: ["График СМР", "Журналы работ", "Акты", "Исполнительная документация"],
+        result: "Объект построен и подготовлен к вводу.",
+        status: "waiting"
+      },
+      {
+        id: 11,
+        phase: "launch",
+        title: "Ввод объекта в эксплуатацию",
+        duration: "5–7 раб. дней (с проверкой до 3 мес)",
+        summary: "ЗОС, договоры с ресурсниками и финальная проверка объекта.",
+        description: "Заключение о соответствии (Минстройнадзор). Договоры с ресурсниками: акты разграничения, пуск газа, вода.",
+        responsible: "Минжилполитики, Ростехнадзор (газ)",
+        risks: "Итоговая проверка выявляет недочёты → оперативное устранение.",
+        law: "ГрК РФ",
+        documents: ["ЗОС", "Акты разграничения", "Договоры с ресурсниками", "Исполнительная документация"],
+        result: "Объект введён в эксплуатацию.",
+        status: "waiting"
+      },
+      {
+        id: 12,
+        phase: "launch",
+        title: "Госрегистрация права собственности",
+        duration: "7 раб. дней (с 2025 — 1 день за доп. пошлину)",
+        summary: "Техплан, подача в Росреестр и получение выписки ЕГРН.",
+        description: "Технический план от кадастрового инженера, подача в Росреестр. Получение выписки ЕГРН.",
+        responsible: "Росреестр",
+        risks: "Ошибки в техплане → выбор проверенного кадастрового инженера.",
+        law: "218-ФЗ",
+        documents: ["Технический план", "Заявление в Росреестр", "Правоустанавливающие документы"],
+        result: "Право собственности зарегистрировано.",
+        status: "waiting"
+      },
+      {
+        id: 13,
+        phase: "launch",
+        title: "Подбор, монтаж и пусконаладка оборудования",
+        duration: "3–6 мес",
+        summary: "Тендер, поставка, таможня, монтаж, пусконаладка и обучение персонала.",
+        description: "Тендер на станки (ЕАЭС, Китай, Турция). Таможня (СЭЗ). Монтаж, пусконаладка, обучение персонала.",
+        responsible: "Инвестор + шеф-монтаж",
+        risks: "Санкционные ограничения на ЧПУ → параллельный импорт через материк.",
+        law: "СЭЗ, 377-ФЗ",
+        documents: ["Спецификация оборудования", "Контракты поставки", "Акты ПНР", "Программа обучения"],
+        result: "Оборудование установлено и готово к запуску.",
+        status: "waiting"
+      },
+      {
+        id: 14,
+        phase: "monitor",
+        title: "Выход на проектную мощность и мониторинг",
+        duration: "12–24 мес",
+        summary: "KPI, отчётность, анализ отклонений и контроль выполнения обязательств.",
+        description: "Полугодовые отчёты в Минэкономики и УК. Ежеквартальная отчётность перед УК. Анализ отклонений, доступ к субсидиям ФРП.",
+        responsible: "Инвестор / УК / Минэкономики РК",
+        risks: "Недостижение KPI → лишение статуса. Корректировка бизнес-плана, своевременное информирование.",
+        law: "Положение о резидентской политике, постановление №368",
+        documents: ["Полугодовые отчёты", "Ежеквартальные KPI", "Мониторинг показателей"],
+        result: "Проект достигает проектной мощности и удерживает целевые показатели.",
+        status: "waiting"
+      }
+    ];
+
+    const orderedSteps = [...steps].sort((a, b) => a.id - b.id);
+
+    const roadmapEl = document.getElementById("roadmap");
+    const phasePillsEl = document.getElementById("phasePills");
+    const phaseSelectEl = document.getElementById("phaseSelect");
+    const searchEl = document.getElementById("search");
+    const printBtn = document.getElementById("printBtn");
+    const printSheetEl = document.getElementById("printSheet");
+    const detailsModalEl = document.getElementById("detailsModal");
+    const modalContentEl = document.getElementById("modalContent");
+
+    let selectedId = 1;
+    let activePhase = "all";
+    let query = "";
+    let statuses = loadStatuses();
+    let modalOpen = false;
+
+    function escapeHtml(value){
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function getPhaseLabel(phaseId){
+      return phaseMap[phaseId] ? `${phaseMap[phaseId].name} (${phaseMap[phaseId].range})` : "";
+    }
+
+    function normalizeStatus(value){
+      return value === "done" ? "done" : "waiting";
+    }
+
+    function getPrevStepId(stepId){
+      const index = orderedSteps.findIndex(step => step.id === Number(stepId));
+      return index > 0 ? orderedSteps[index - 1].id : null;
+    }
+
+    function getLockReason(stepId){
+      const prevId = getPrevStepId(stepId);
+      if(prevId === null) return "";
+      return `Этап откроется после того, как этап ${prevId} будет отмечен как «Готово».`;
+    }
+
+    function isStepUnlocked(stepId){
+      const prevId = getPrevStepId(stepId);
+      if(prevId === null) return true;
+      return normalizeStatus(statuses[prevId]) === "done";
+    }
+
+    function applySequenceRules(sourceStatuses){
+      const normalized = {};
+      let canProceed = true;
+
+      for(const step of orderedSteps){
+        const current = normalizeStatus(sourceStatuses[step.id] ?? step.status);
+        normalized[step.id] = canProceed ? current : "waiting";
+
+        if(normalized[step.id] !== "done"){
+          canProceed = false;
+        }
+      }
+
+      return normalized;
+    }
+
+    function loadStatuses(){
+      try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        const parsed = raw ? JSON.parse(raw) : {};
+        const draft = {};
+
+        for(const step of steps){
+          draft[step.id] = normalizeStatus(parsed[step.id] || step.status);
+        }
+
+        return applySequenceRules(draft);
+      }catch(error){
+        const fallback = {};
+        for(const step of steps){
+          fallback[step.id] = normalizeStatus(step.status);
+        }
+        return applySequenceRules(fallback);
+      }
+    }
+
+    function saveStatuses(){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(statuses));
+    }
+
+    function getStatusInfo(stepId){
+      const key = normalizeStatus(statuses[stepId]);
+      return statusDict[key];
+    }
+
+    function getStepsForPhase(phaseId){
+      return phaseId === "all"
+        ? steps
+        : steps.filter(step => step.phase === phaseId);
+    }
+
+    function getPhaseCompletion(phaseId){
+      const items = getStepsForPhase(phaseId);
+      const total = items.length;
+      const done = items.filter(step => normalizeStatus(statuses[step.id]) === "done").length;
+
+      return {
+        total,
+        done,
+        waiting: total - done,
+        isComplete: total > 0 && done === total
+      };
+    }
+
+    function getVisibleSteps(){
+      return steps.filter(step => {
+        const haystack = [
+          step.title,
+          step.summary,
+          step.description,
+          step.responsible,
+          step.risks,
+          step.law,
+          step.documents.join(" "),
+          getPhaseLabel(step.phase)
+        ].join(" ").toLowerCase();
+
+        const matchesPhase = activePhase === "all" || step.phase === activePhase;
+        const matchesQuery = !query || haystack.includes(query);
+        return matchesPhase && matchesQuery;
+      });
+    }
+
+    function syncSelection(visibleSteps = getVisibleSteps()){
+      const unlockedVisible = visibleSteps.filter(step => isStepUnlocked(step.id));
+
+      if(selectedId !== null && unlockedVisible.some(step => step.id === selectedId)){
+        return;
+      }
+
+      selectedId = unlockedVisible.length ? unlockedVisible[0].id : null;
+    }
+
+    function buildStatusToggle(stepId){
+      const current = normalizeStatus(statuses[stepId]);
+      return `
+        <div class="status-toggle" data-role="status-toggle">
+          <button class="status-toggle__btn ${current === "done" ? "is-active" : ""}" type="button" data-action="set-status" data-id="${stepId}" data-status="done">
+            Готово
+          </button>
+          <button class="status-toggle__btn ${current === "waiting" ? "is-active" : ""}" type="button" data-action="set-status" data-id="${stepId}" data-status="waiting">
+            Ожидает
+          </button>
+        </div>
+      `;
+    }
+
+    function buildStatusBadge(stepId){
+      const info = getStatusInfo(stepId);
+      return `<span class="status-badge status-badge--${info.className}">${info.label}</span>`;
+    }
+
+    function buildLockChip(stepId){
+      const prevId = getPrevStepId(stepId);
+      return `<span class="lock-chip">🔒 Сначала этап ${prevId}</span>`;
+    }
+
+    function buildStepIcon(stepId, large = false){
+      const icon = stepIcons[stepId] || stepIcons[1];
+      return `
+        <div
+          class="step-glyph ${large ? "step-glyph--large" : ""}"
+          style="--icon-a:${icon.a};--icon-b:${icon.b};--icon-shadow:${icon.shadow};"
+          aria-hidden="true"
+        >
+          ${icon.svg}
+        </div>
+      `;
+    }
+
+    function setStepStatus(stepId, nextStatus){
+      const numericId = Number(stepId);
+      const normalizedStatus = normalizeStatus(nextStatus);
+
+      if(normalizedStatus === "done" && !isStepUnlocked(numericId)){
+        return;
+      }
+
+      const draft = { ...statuses, [numericId]: normalizedStatus };
+      statuses = applySequenceRules(draft);
+      saveStatuses();
+      renderAll();
+    }
+
+    function renderPhasePills(){
+      phasePillsEl.innerHTML = phases.map(phase => {
+        const progress = getPhaseCompletion(phase.id);
+        const stateClass = progress.isComplete ? "phase-pill--complete" : "phase-pill--partial";
+
+        return `
+          <button
+            class="phase-pill ${stateClass} ${activePhase === phase.id ? "is-active" : ""}"
+            data-phase="${phase.id}"
+            type="button"
+          >
+            ${escapeHtml(phase.name)}
+            <small>${escapeHtml(phase.range)} · ${progress.done}/${progress.total} готово</small>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function renderPhaseSelect(){
+      phaseSelectEl.innerHTML = phases.map(phase => {
+        const progress = getPhaseCompletion(phase.id);
+        return `
+          <option value="${phase.id}" ${activePhase === phase.id ? "selected" : ""}>
+            ${escapeHtml(phase.name)} — ${progress.done}/${progress.total} готово
+          </option>
+        `;
+      }).join("");
+    }
+
+    function renderRoadmap(){
+      const visibleSteps = getVisibleSteps();
+      const visibleIds = new Set(visibleSteps.map(step => step.id));
+      const selectedStillVisibleAndUnlocked =
+        selectedId !== null &&
+        visibleIds.has(selectedId) &&
+        isStepUnlocked(selectedId);
+
+      syncSelection(visibleSteps);
+
+      if(modalOpen && !selectedStillVisibleAndUnlocked){
+        closeModal();
+      }
+
+      if(!visibleSteps.length){
+        roadmapEl.innerHTML = `
+          <div class="empty-state">
+            Ничего не найдено. Попробуй изменить поисковый запрос или выбрать другую фазу.
+          </div>
+        `;
+        return;
+      }
+
+      roadmapEl.innerHTML = groupedPhases.map(group => {
+        const items = steps.filter(step => step.phase === group.id && visibleIds.has(step.id));
+        if(!items.length) return "";
+
+        return `
+          <section class="phase" id="phase-${group.id}">
+            <div class="phase__head">
+              <div class="phase__title">
+                <div class="eyebrow">${escapeHtml(group.range)}</div>
+                <h2>${escapeHtml(group.name)}</h2>
+              </div>
+              <div class="phase__meta">${items.length} этапов</div>
+            </div>
+
+            <div class="cards">
+              ${items.map(step => {
+                const locked = !isStepUnlocked(step.id);
+                return `
+                  <article
+                    class="card ${selectedId === step.id ? "is-selected" : ""} ${locked ? "is-locked" : ""}"
+                    data-id="${step.id}"
+                    data-locked="${locked ? "true" : "false"}"
+                    tabindex="${locked ? "-1" : "0"}"
+                    aria-disabled="${locked ? "true" : "false"}"
+                  >
+                    <div class="card__top">
+                      <div class="card__topMain">
+                        <div class="num">${step.id}</div>
+                        <div>
+                          <h3>${escapeHtml(step.title)}</h3>
+                          <div class="card__phase">${escapeHtml(getPhaseLabel(step.phase))}</div>
+                        </div>
+                      </div>
+                      ${buildStepIcon(step.id, false)}
+                    </div>
+
+                    <div class="card__controls">
+                      ${locked ? buildLockChip(step.id) : buildStatusToggle(step.id)}
+                      <span class="duration-chip">${escapeHtml(step.duration)}</span>
+                    </div>
+
+                    ${locked ? `<div class="lock-note">${escapeHtml(getLockReason(step.id))}</div>` : ""}
+
+                    <p class="card__summary">${escapeHtml(step.summary)}</p>
+
+                    <div class="chips">
+                      ${step.documents.slice(0, 3).map(doc => `<span class="chip">${escapeHtml(doc)}</span>`).join("")}
+                    </div>
+
+                    <div class="card__bottom">
+                      <div class="duration">${escapeHtml(step.duration)}</div>
+                      <div class="link-more ${locked ? "link-more--locked" : ""}">
+                        ${locked ? "Недоступно" : "Открыть детали →"}
+                      </div>
+                    </div>
+                  </article>
+                `;
+              }).join("")}
+            </div>
+          </section>
+        `;
+      }).join("");
+    }
+
+    function getDetailsMarkup(step){
+      const nextStep = steps.find(item => item.id === step.id + 1);
+
+      return `
+        <div class="modal__top">
+          <button class="modal__close" type="button" data-action="close-modal" aria-label="Закрыть окно">×</button>
+        </div>
+
+        <div class="detail-hero">
+          ${buildStepIcon(step.id, true)}
+          <div class="detail-hero__content">
+            <div class="detail-hero__chips">
+              <span class="detail-chip">Этап ${step.id}</span>
+              <span class="detail-chip detail-chip--phase">${escapeHtml(getPhaseLabel(step.phase))}</span>
+              ${buildStatusBadge(step.id)}
+            </div>
+            <h2>${escapeHtml(step.title)}</h2>
+            <p>${escapeHtml(step.summary)}</p>
+          </div>
+        </div>
+
+        <div class="details__toolbar">
+          ${buildStatusToggle(step.id)}
+          <span class="duration-chip">${escapeHtml(step.duration)}</span>
+        </div>
+
+        <div class="detail-meta">
+          <div class="detail-meta__item">
+            <span class="detail-meta__label">Срок</span>
+            <span class="detail-meta__value">${escapeHtml(step.duration)}</span>
+          </div>
+
+          <div class="detail-meta__item">
+            <span class="detail-meta__label">Ответственные</span>
+            <span class="detail-meta__value">${escapeHtml(step.responsible)}</span>
+          </div>
+
+          <div class="detail-meta__item">
+            <span class="detail-meta__label">Фаза</span>
+            <span class="detail-meta__value">${escapeHtml(getPhaseLabel(step.phase))}</span>
+          </div>
+
+          <div class="detail-meta__item detail-meta__item--full">
+            <span class="detail-meta__label">Нормативная база</span>
+            <span class="detail-meta__value">${escapeHtml(step.law)}</span>
+          </div>
+        </div>
+
+        <div class="details-grid">
+          <div class="info-box">
+            <h4>Описание</h4>
+            <p>${escapeHtml(step.description)}</p>
+          </div>
+
+          <div class="info-box">
+            <h4>Основные риски и минимизация</h4>
+            <p>${escapeHtml(step.risks)}</p>
+          </div>
+
+          <div class="info-box">
+            <h4>Документы / материалы</h4>
+            <ul>
+              ${step.documents.map(doc => `<li>${escapeHtml(doc)}</li>`).join("")}
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h4>Результат этапа</h4>
+            <p>${escapeHtml(step.result)}</p>
+          </div>
+        </div>
+
+        <div class="next-step">
+          <div class="next-step__label">Следующий шаг</div>
+          <div class="next-step__title">
+            ${nextStep ? `${nextStep.id}. ${escapeHtml(nextStep.title)}` : "Финальный этап маршрута"}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderModal(){
+      if(!modalOpen){
+        detailsModalEl.classList.remove("is-open");
+        detailsModalEl.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        modalContentEl.innerHTML = "";
+        return;
+      }
+
+      const visibleSteps = getVisibleSteps();
+      const step = steps.find(item => item.id === selectedId);
+
+      if(!step || !visibleSteps.some(item => item.id === step.id) || !isStepUnlocked(step.id)){
+        closeModal();
+        return;
+      }
+
+      modalContentEl.innerHTML = getDetailsMarkup(step);
+      detailsModalEl.classList.add("is-open");
+      detailsModalEl.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+
+      requestAnimationFrame(() => {
+        const closeButton = detailsModalEl.querySelector(".modal__close");
+        if(closeButton) closeButton.focus();
+      });
+    }
+
+    function openModalForStep(stepId){
+      const numericId = Number(stepId);
+      if(!isStepUnlocked(numericId)) return;
+
+      selectedId = numericId;
+      modalOpen = true;
+      renderRoadmap();
+      renderModal();
+    }
+
+    function closeModal(){
+      modalOpen = false;
+      renderModal();
+    }
+
+    function renderPrintSheet(){
+      printSheetEl.innerHTML = `
+        <div class="print-sheet">
+          <div class="print-sheet__title">Чек-лист инвестора</div>
+          <div class="print-sheet__meta">Феодосийский индустриальный парк · все этапы маршрута · статусы на дату печати</div>
+
+          ${groupedPhases.map(group => {
+            const items = steps.filter(step => step.phase === group.id);
+            return `
+              <section class="print-phase">
+                <div class="print-phase__title">${escapeHtml(group.name)} · ${escapeHtml(group.range)}</div>
+                <div class="print-cards">
+                  ${items.map(step => {
+                    const status = getStatusInfo(step.id);
+                    const locked = !isStepUnlocked(step.id);
+                    return `
+                      <div class="print-card">
+                        <div class="print-card__top">
+                          <div>
+                            <h3>${step.id}. ${escapeHtml(step.title)}</h3>
+                            <div class="print-card__phase">${escapeHtml(getPhaseLabel(step.phase))}</div>
+                          </div>
+                          <div class="print-status">${escapeHtml(locked ? `${status.label} · заблокирован` : status.label)}</div>
+                        </div>
+
+                        <div class="print-meta"><strong>Срок:</strong> ${escapeHtml(step.duration)}</div>
+                        <div class="print-meta"><strong>Ответственные:</strong> ${escapeHtml(step.responsible)}</div>
+                        <div class="print-meta"><strong>Нормативная база:</strong> ${escapeHtml(step.law)}</div>
+                        <div class="print-meta"><strong>Описание:</strong> ${escapeHtml(step.summary)}</div>
+                        <div class="print-docs"><strong>Документы:</strong> ${escapeHtml(step.documents.join(", "))}</div>
+                      </div>
+                    `;
+                  }).join("")}
+                </div>
+              </section>
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
+
+    function startPrint(){
+      renderPrintSheet();
+      document.body.classList.add("print-mode");
+      setTimeout(() => {
+        window.print();
+      }, 80);
+    }
+
+    function cleanupPrintMode(){
+      document.body.classList.remove("print-mode");
+    }
+
+    function renderAll(){
+      renderPhasePills();
+      renderPhaseSelect();
+      renderRoadmap();
+      renderModal();
+    }
+
+    roadmapEl.addEventListener("click", (event) => {
+      const statusBtn = event.target.closest('[data-action="set-status"]');
+      if(statusBtn){
+        event.preventDefault();
+        event.stopPropagation();
+        const id = Number(statusBtn.dataset.id);
+        const nextStatus = statusBtn.dataset.status;
+        setStepStatus(id, nextStatus);
+        return;
+      }
+
+      const card = event.target.closest(".card");
+      if(!card) return;
+      if(card.dataset.locked === "true") return;
+
+      openModalForStep(card.dataset.id);
+    });
+
+    roadmapEl.addEventListener("keydown", (event) => {
+      if(event.target.closest('button, input, select, textarea')) return;
+
+      const card = event.target.closest(".card");
+      if(!card) return;
+      if(card.dataset.locked === "true") return;
+
+      if(event.key === "Enter" || event.key === " "){
+        event.preventDefault();
+        openModalForStep(card.dataset.id);
+      }
+    });
+
+    modalContentEl.addEventListener("click", (event) => {
+      const closeTarget = event.target.closest('[data-action="close-modal"]');
+      if(closeTarget){
+        closeModal();
+        return;
+      }
+
+      const statusBtn = event.target.closest('[data-action="set-status"]');
+      if(statusBtn){
+        event.preventDefault();
+        const id = Number(statusBtn.dataset.id);
+        const nextStatus = statusBtn.dataset.status;
+        setStepStatus(id, nextStatus);
+      }
+    });
+
+    detailsModalEl.addEventListener("click", (event) => {
+      const closeTarget = event.target.closest('[data-action="close-modal"]');
+      if(closeTarget){
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if(event.key === "Escape" && modalOpen){
+        closeModal();
+      }
+    });
+
+    phasePillsEl.addEventListener("click", (event) => {
+      const btn = event.target.closest("[data-phase]");
+      if(!btn) return;
+      activePhase = btn.dataset.phase;
+      renderAll();
+    });
+
+    phaseSelectEl.addEventListener("change", (event) => {
+      activePhase = event.target.value;
+      renderAll();
+    });
+
+    searchEl.addEventListener("input", (event) => {
+      query = event.target.value.trim().toLowerCase();
+      renderAll();
+    });
+
+    printBtn.addEventListener("click", startPrint);
+    window.addEventListener("afterprint", cleanupPrintMode);
+
+    statuses = applySequenceRules(statuses);
+    saveStatuses();
+    renderAll();
+  </script>
+</body>
+</html>
